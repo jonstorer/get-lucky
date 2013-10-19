@@ -26,7 +26,7 @@ app.get '/app.js', (req, res) ->
     output += '// ' + path + '\n'
     output += '//\n'
     data = fs.readFileSync(path, 'utf8')
-    script = if path.match(new RegExp(/js$/)) then data.toString() else cs.compile data
+    script = if path.match(new RegExp(/js$/)) then data.toString() else cs.compile(data)
     output += uglify.minify(script, fromString: true).code + '\n'
 
   res.send output

@@ -1,15 +1,16 @@
-define ["backbone", "home"], (Backbone, Home) ->
-  class Router extends Backbone.Router
-    main: ->
-      $ "#main"
-      
-    initialize: ->
-      console.log "Loading router"
+class Router extends Backbone.Router
+  main: ->
+    $ "#main"
 
-    routes:
-      "": "home"
+  initialize: ->
+    console.log "Loading router"
 
-    home: ->
-      console.log "Loading Home"
-      view = new Home
-      view.render()
+  routes:
+    "": "home"
+
+  home: ->
+    console.log "Loading Home"
+    view = new Home
+    view.render()
+
+window.Router = Router

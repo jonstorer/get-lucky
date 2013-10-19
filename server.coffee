@@ -19,6 +19,7 @@ paths = [
   'src/home.coffee',
   'src/router.coffee',
   'src/sequencer.coffee',
+  'src/track.coffee',
   'src/main.coffee'
 ]
 

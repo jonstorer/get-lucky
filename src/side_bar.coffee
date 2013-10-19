@@ -33,5 +33,4 @@ class Sidebar extends Backbone.View
       @$el.find("#library").show()
       @$el.find("#composer").hide()   
 
-   
 window.Sidebar = Sidebar

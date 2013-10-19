@@ -5,17 +5,21 @@ uglify  = require 'uglifyjs'
 app     = express()
 
 paths = [
+  'node_modules/soundrepl/src/3rd/teoria.js',
+  'node_modules/soundrepl/src/main.js',
+  'node_modules/soundrepl/src/tracks/getLucky.js',
+  'bower_components/jquery/jquery.min.js',
   'bower_components/jquery/jquery.min.js',
   'bower_components/jquery-ui/ui/jquery-ui.js',
   'bower_components/underscore/underscore-min.js',
   'bower_components/backbone/backbone-min.js',
   'src/app.coffee',
-  'src/main.coffee',
   'src/composer.coffee',
   'src/controls.coffee',
   'src/home.coffee',
   'src/router.coffee',
-  'src/sequencer.coffee'
+  'src/sequencer.coffee',
+  'src/main.coffee'
 ]
 
 app.get '/app.js', (req, res) ->

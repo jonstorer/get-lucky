@@ -3,16 +3,24 @@ class Composer extends Backbone.View
 
   initialize: ->
     console.log "Loading composer"
+    @sampleTemplate = _.template """
+      <div class='sample' data-id=''>
+      </div>
+    """
 
+    @stage = soundrepl.create()
   events: ->
     "submit #repl": "replEval"
 
   render: ->
-    @$el.html _.template """
+    @$el.html """
       <h3>Composer</h3>
       <form id='repl'>
-        <textarea rows=10></textarea>
-        <input type='submit' value='Eval'/>
+        <input type='text'>
+        </input>
+        <textarea rows=10>
+        </textarea>
+        <input type='submit' value='Commit'/>
       </form>
 
       """

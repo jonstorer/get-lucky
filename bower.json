@@ -1,6 +1,6 @@
 {
   "name": "get-lucky",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "authors": [
     "Jonathon Storer <jonathon.scott.storer@gmail.com>"
   ],
@@ -14,11 +14,10 @@
   ],
   "dependencies": {
     "jquery": "~2.0.3",
-    "gridster": "*",
-    "qunit": "~1.12.0",
     "underscore": "~1.5.2",
     "backbone": "~1.1.0",
     "requirejs": "~2.1.9",
+    "jquery-ui": "~1.10.3"
   },
   "resolutions": {
     "backbone": "~1.1.0"

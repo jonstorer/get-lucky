@@ -2,46 +2,112 @@
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>gridster.js Test Suite</title>
-    <!-- Load local jQuery, removing access to $ (use jQuery, not $). -->
-    <script src='jquery/jquery.js'></script>
-    <script src='gridster/dist/jquery.gridster.min.js' charset='utf-8'></script>
-    <script src='requirejs/require.js' data-main='src/config.js'></script>
-    <link rel='stylesheet' type='text/css' href='gridster/dist/jquery.gridster.css'>	
+    <title>Get Lucky</title>
     <link rel='stylesheet' type='text/css' href='css/lucky.css'>
-    <link rel='stylesheet' href='qunit/qunit/qunit.css' media='screen'>
-
-    <script>
-      $(function(){ //DOM Ready
-        $('.gridster ul').gridster({
-          widget_margins: [10, 10],
-          widget_base_dimensions: [140, 140]
-        });
-      });
-    </script>
-
   </head>
   <body>
-    <div id="main"></div>
-    <div class='gridster'>
-      <ul>
-        <li data-row='1' data-col='1' data-sizex='1' data-sizey='1'></li>
-        <li data-row='2' data-col='1' data-sizex='1' data-sizey='1'></li>
-        <li data-row='3' data-col='1' data-sizex='1' data-sizey='1'></li>
-
-        <li data-row='1' data-col='2' data-sizex='2' data-sizey='1'></li>
-        <li data-row='2' data-col='2' data-sizex='2' data-sizey='2'></li>
-
-        <li data-row='1' data-col='4' data-sizex='1' data-sizey='1'></li>
-        <li data-row='2' data-col='4' data-sizex='2' data-sizey='1'></li>
-        <li data-row='3' data-col='4' data-sizex='1' data-sizey='1'></li>
-
-        <li data-row='1' data-col='5' data-sizex='1' data-sizey='1'></li>
-        <li data-row='3' data-col='5' data-sizex='1' data-sizey='1'></li>
-
-        <li data-row='1' data-col='6' data-sizex='1' data-sizey='1'></li>
-        <li data-row='2' data-col='6' data-sizex='1' data-sizey='2'></li>
-      </ul>
+    <div id='main'></div>
+    <div id='grid'>
+      <div class='track' data-voice='melody'>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+      </div>
+      <div class='track' data-voice='bass'>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+      </div>
+      <div class='track' data-voice='drums'>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+      </div>
+    </div>
+    <div id='library'>
+      <div class='sample' data-sample-id='intro'>
+        I'm the intro
+      </div>
+      <br>
+      <div class='sample' data-sample-id='breakdown'>
+        I'm the breakdown
+      </div>
+      <br>
+      <div class='sample' data-sample-id='hook'>
+        I'm the hook
+      </div>
     </div>
   </body>
+  <script src='requirejs/require.js' data-main='src/config.js'></script>
+  <script>
+    require(['jquery/jquery.js', 'jquery-ui/ui/jquery-ui.js', 'underscore/underscore-min.js'], function() {
+
+      $(function(){
+        $('.sample').draggable({
+          snap: '.beat',
+          snapTolerance: 10
+        });
+
+        $('.beat').droppable({
+          accept: '.sample',
+          activeClass: 'active',
+          hoverClass: 'hover',
+          drop: function( event, ui ) {
+            console.log('dropped');
+          }
+        });
+      });
+
+    });
+  </script>
+  <style>
+    .active {
+      background-color: grey;
+    }
+
+    .hover {
+      background-color: blue;
+    }
+
+    .track {
+      margin-bottom: 10px;
+      border-top: 1px solid black;
+      overflow: auto
+    }
+
+    .beat {
+      float:left;
+      height: 100px;
+      width: 20px;
+      border-left: 1px solid black;
+      border-bottom: 1px solid black;
+    }
+
+    .sample {
+      height: 100px;
+      width: 100px;
+      background-color: red;
+    }
+  </style>
 </html>

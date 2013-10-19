@@ -17,6 +17,7 @@
     "gridster": "*",
     "qunit": "~1.12.0",
     "underscore": "~1.5.2",
-    "backbone": "~1.1.0"
+    "backbone": "~1.1.0",
+    "requirejs": "~2.1.9"
   }
 }

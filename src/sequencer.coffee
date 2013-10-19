@@ -8,7 +8,7 @@ class Sequencer extends Backbone.View
     @$el.append (new Track(title: 'Melody')).render().el
     @$el.append (new Track(title: 'Harmony')).render().el
     @$el.append (new Track(title: 'Bass')).render().el
-    @$el.append (new Track(title: 'Drums')).render().el
+    #@$el.append (new Track(title: 'Drums')).render().el
 
     @$el.find('.beat').droppable
       accept: '.sample',

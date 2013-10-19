@@ -170,7 +170,12 @@ input[type=submit]:hover {
 .sample {
   height: 50px;
   width: 100px;
-  background-color: red;
+  background-color: #2ecc71;
+}
+
+.sample:hover {
+  pointer: cursor;
+  opacity: 0.8;
 }
 
 .tab_container {
@@ -183,7 +188,7 @@ input[type=submit]:hover {
 }
 
 .tab {
-  padding: 10px 10px 1px 10px;
+  padding: 10px 10px 0px 10px;
   background: #bdc3c7;
 }
 

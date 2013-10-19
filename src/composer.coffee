@@ -2,8 +2,6 @@ class Composer extends Backbone.View
   id: "composer"
 
   initialize: ->
-    console.log "Loading composer"
-
     @inputTemplate = """
       <h3>Composer</h3>
       <form id='repl'>
@@ -23,8 +21,9 @@ class Composer extends Backbone.View
 
   replEval: (e) ->
     e.preventDefault()
-    sample = new Function(@$('textarea').val())
-    sample.name = @$('input[type=text]').val()
+    sample = new Function(@$el.find('textarea').val())
+    sample.title = @$el.find('input[name="title"]').val()
+    window.currentSample = sample
 
     Exchange.trigger 'new sample', new Sample(sample: sample)
 

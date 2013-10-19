@@ -7,13 +7,13 @@ class Sample extends Backbone.View
 
     @sampleTemplate = _.template """
       <div class='sample' data-id=''>
-        <%= name %>
+        <%= title %>
       </div>
     """
 
   render: ->
     view = @sampleTemplate(@sample)
-    $(view).data('view', @)
+    @$el.data('view', @)
     @$el.html view
     @
 

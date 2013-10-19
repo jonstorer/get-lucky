@@ -8,8 +8,8 @@ class Composer extends Backbone.View
     @inputTemplate = """
       <h3>Composer</h3>
       <form id='repl'>
-        <label for='title'>Name</label>
-        <input name='title' type='text'/>
+        <label for='name'>Name</label>
+        <input name='name' type='text'/>
         <label for='repl'>Repl</label>
         <input type='text' name='repl'/>
         <input type='submit' value='Play' style='display: inline-block;'/>
@@ -53,8 +53,8 @@ class Composer extends Backbone.View
       
   addToLibrary: (e) ->
     e.preventDefault()
-    sample = new Function(@$('input[name=repl]').val())
-    sample.name = @$('input[name=name]').val()    
+    sample = new Function(@$el.find('input[name=repl]').val())
+    sample.name = @$el.find('input[name=name]').val()    
     Exchange.trigger 'new sample', new Sample(sample: sample)
 
 window.Composer = Composer

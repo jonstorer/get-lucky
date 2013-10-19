@@ -2,14 +2,10 @@
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>gridster.js Test Suite</title>
-    <!-- Load local jQuery, removing access to $ (use jQuery, not $). -->
-    <script src='jquery/jquery.js'></script>
-    <script src='gridster/dist/jquery.gridster.min.js' charset='utf-8'></script>
+    <title>Get Lucky</title>
+
     <script src='requirejs/require.js' data-main='src/config.js'></script>
     <link rel='stylesheet' type='text/css' href='css/reset.css'>
-    <link rel='stylesheet' type='text/css' href='gridster/dist/jquery.gridster.css'>
-    <link rel='stylesheet' href='qunit/qunit/qunit.css' media='screen'>
     <link rel='stylesheet' type='text/css' href='css/lucky.css'>
     <script type="text/javascript" src="//use.typekit.net/rok0jib.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
@@ -19,5 +15,107 @@
     <div id="main">
       <h2 id="title"></h2>
     </div>
+    <div id='grid'>
+      <div class='track' data-voice='melody'>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+      </div>
+      <div class='track' data-voice='bass'>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+      </div>
+      <div class='track' data-voice='drums'>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+        <div class='beat'></div>
+      </div>
+    </div>
+    <div id='library'>
+      <div class='sample' data-sample-id='intro'>
+        I'm the intro
+      </div>
+      <br>
+      <div class='sample' data-sample-id='breakdown'>
+        I'm the breakdown
+      </div>
+      <br>
+      <div class='sample' data-sample-id='hook'>
+        I'm the hook
+      </div>
+    </div>
   </body>
+  <script src='requirejs/require.js' data-main='src/config.js'></script>
+  <script>
+    require(['jquery/jquery.js', 'jquery-ui/ui/jquery-ui.js', 'underscore/underscore-min.js'], function() {
+
+      $(function(){
+        $('.sample').draggable({
+          snap: '.beat',
+          snapTolerance: 10
+        });
+
+        $('.beat').droppable({
+          accept: '.sample',
+          activeClass: 'active',
+          hoverClass: 'hover',
+          drop: function( event, ui ) {
+            console.log('dropped');
+          }
+        });
+      });
+
+    });
+  </script>
+  <style>
+    .active {
+      background-color: grey;
+    }
+
+    .hover {
+      background-color: blue;
+    }
+
+    .track {
+      margin-bottom: 10px;
+      border-top: 1px solid black;
+      overflow: auto
+    }
+
+    .beat {
+      float:left;
+      height: 100px;
+      width: 20px;
+      border-left: 1px solid black;
+      border-bottom: 1px solid black;
+    }
+
+    .sample {
+      height: 100px;
+      width: 100px;
+      background-color: red;
+    }
+  </style>
 </html>

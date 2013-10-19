@@ -2,7 +2,6 @@ class Composer extends Backbone.View
   id: "composer"
 
   initialize: ->
-    console.log "Loading composer"
     @repl = soundrepl.init(window.ac)
 
     @inputTemplate = """
@@ -18,9 +17,9 @@ class Composer extends Backbone.View
     """
 
   events: ->
-    "submit #repl": "submitReplEval"
+    "submit #repl":        "submitReplEval"
     "click #addToLibrary": "addToLibrary"
-    "keypress :input": "keyReplEval"
+    "keypress :input":     "keyReplEval"
 
   render: ->
     @$el.html @inputTemplate
@@ -35,26 +34,21 @@ class Composer extends Backbone.View
     e.preventDefault()
     @replEval()
 
-  replEval: (e) ->
+  replEval: ->
     console.log "Eval repl"
     code = @$el.find('input[name=repl]').val()
-    console.log code
     try
-      `var input;`
-      `input = new Function('sample', 'return ' + code)(this.repl.create);`
-      # console.log input
+      sample = new Function('sample', "return #{code}")(@repl.create)
+      sample?.play?() || @repl.create(sample).play(bpm)
     catch err
       window.alert(err)
-    `if (typeof input === 'object' && 'play' in input && typeof input.play === 'function') 
-          input.play(bpm);
-        else //sound primative
-          this.repl.create(input).play(bpm);`
-    return 
-      
+
   addToLibrary: (e) ->
     e.preventDefault()
-    sample = new Function(@$el.find('input[name=repl]').val())
-    sample.name = @$el.find('input[name=name]').val()    
-    Exchange.trigger 'new sample', new Sample(sample: sample)
+    code         = @$el.find('input[name=repl]').val()
+    title        = @$el.find('input[name=name]').val()
+    sample       = new Function('sample', "return #{code}")
+    sample.title = title
+    Exchange.trigger 'new.sample', new Sample(sample: sample)
 
 window.Composer = Composer

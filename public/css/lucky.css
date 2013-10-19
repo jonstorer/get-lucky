@@ -1,0 +1,166 @@
+body {
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    font-family: "effra", sans-serif;
+    font-size: 16px;
+    color: #333333;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 24px;
+    margin: 20px 0;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-size: 18px;
+    margin: 15px 0;
+    text-transform: uppercase;
+}
+
+input[type=submit] {
+    width: auto;
+    height: 40px;
+    min-width: 80px;
+    background: #27ae60;
+    border: 0;
+    color: #eeeeeee;
+    font-weight: bold;
+    padding: 10px, 15px;
+    font-size: 14px;
+    border-bottom: 3px solid #16a085;
+    text-transform: uppercase;
+    color: #eeeeee;    
+}
+
+input[type=submit]:hover {
+    cursor: pointer;
+}
+
+#main {
+    background: #ecf0f1;    
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    padding-top: 40px;
+}
+
+div.beat {
+    width: 10px;
+}
+
+#top_nav {
+    position: fixed;
+    width: 100%;
+    background: #2980b9;
+    z-index: 999999;
+    border-bottom: 2px solid #226B9C;
+}
+
+#top_nav h1{
+    top: 0;
+    margin: 0;
+    padding: 12px;
+    color: #F3F3F3;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#composer {
+    right: 0;
+    position: fixed;
+    height: 100%;
+    background: #bdc3c7;
+    width: 40%;
+    top: 0;
+    z-index: 1;
+    padding: 30px;
+    padding-top: 60px;
+    border-left: 2px solid #7E7E7E;
+}
+
+#composer.hidden {
+    width: 70px;
+    padding: 0;
+}
+
+#composer.hidden h3{
+    display: none;
+}
+
+#composer.hidden form{
+    display: none;
+}
+
+#repl textarea {
+    width: 100%;
+    height: 
+}
+
+#controls {
+    bottom: 0;
+    position: fixed;
+    background: #2980b9;
+    height: 70px;
+    width: 100%;
+    z-index: 999999;
+    border-top: 2px solid #226B9C;
+}
+
+#controls #playStop {
+    background: red;
+}
+
+#title {
+    margin-top: 30px;
+    margin-bottom: 25px;
+    margin-left: 10px;
+    padding: 0;
+}
+
+#sequencer {
+    background: #819192;
+    height: 100%;
+    overflow: auto;
+    width: 100%;
+    border-top: 2px solid #7E7E7E;
+}
+
+#block {
+    background: #922E72;
+}
+
+.active {
+  background-color: grey;
+}
+
+.hover {
+  background-color: blue;
+}
+
+.track {
+  margin-bottom: 10px;
+  border-top: 1px solid black;
+  overflow: auto
+}
+
+.beat {
+  float:left;
+  height: 100px;
+  width: 20px;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.sample {
+  height: 100px;
+  width: 100px;
+  background-color: red;
+}

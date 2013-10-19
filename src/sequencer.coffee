@@ -5,5 +5,5 @@ define [], () ->
       console.log "Loading sequencer"
 
     render: ->
-      @$el.html _.template("Sequencer goes here")
+      @$el.html _.template("")
       @

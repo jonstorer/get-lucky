@@ -1,0 +1,20 @@
+{
+  "name": "get-lucky",
+  "version": "0.0.0",
+  "authors": [
+    "Jonathon Storer <jonathon.scott.storer@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.0.3",
+    "gridster": "*",
+    "qunit": "~1.12.0"
+  }
+}

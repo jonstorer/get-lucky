@@ -5,3 +5,4 @@ define [], () ->
 
     render: ->
       console.log "rendering!"
+      @

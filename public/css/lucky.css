@@ -52,10 +52,6 @@ input[type=submit]:hover {
     padding-top: 40px;
 }
 
-div.beat {
-    width: 10px;
-}
-
 #top_nav {
     position: fixed;
     width: 100%;
@@ -148,12 +144,11 @@ div.beat {
 .track {
   margin-bottom: 10px;
   border-top: 1px solid black;
-  border-right: 1px solid black;
-  overflow: auto
+  width: 10000000px;
 }
 
 .beat {
-  float:left;
+  display: block;
   height: 100px;
   width: 20px;
   border-right: 1px solid black;

@@ -4,13 +4,6 @@ class App extends Backbone.View
   initialize: ->
     @setup()
 
-  render: ->
-    @setTitle @title or 'My Repl Demo'
-    @$el.append (new Controls).render().el
-    @$el.append (new Composer).render().el
-    @$el.append (new Sequencer).render().el
-    @
-
   setup: ->
     new Router()
     Backbone.history.start
@@ -18,6 +11,13 @@ class App extends Backbone.View
       root: '/'
 
   setTitle: (title) ->
-    @$el.find('#title').html title
+    @$el.find("#title").html title
+
+  render: ->
+    @setTitle @title or 'My Repl Demo'
+    @$el.append (new Controls).render().el
+    @$el.append (new Composer).render().el
+    @$el.append (new Sequencer).render().el
+    @
 
 window.App = App

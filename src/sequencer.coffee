@@ -3,29 +3,24 @@ class Sequencer extends Backbone.View
   initialize: ->
     console.log "Loading sequencer"
 
-    @trackTemplate = _.template """
-    <div>
-      <span> <%= name %> </span>
-      <div class='track'>
-        <% _(numBeats).times(function() { %>
-          <div class='beat'></div>
-        <% }); %>
-      </div>
-    </div>
-    """
-
   render: ->
-    @$el.append @trackTemplate( numBeats: 100, name: 'Melody' )
-    @$el.append @trackTemplate( numBeats: 100, name: 'Rhythm' )
-    @$el.append @trackTemplate( numBeats: 100, name: 'Drums' )
-    @$el.append @trackTemplate( numBeats: 100, name: 'Bass' )
+    @$el.append (new Track).render().el
+    @$el.append (new Track).render().el
+    @$el.append (new Track).render().el
 
-    @$('.beat').droppable
+    #@$el.find('.sample').draggable
+      #snap: '.beat',
+      #snapTolerance: 10
+
+    @$el.find('.beat').droppable
       accept: '.sample',
       activeClass: 'active',
-      hoverClass:'hover',
-      drop: (event, ui) ->
-        console.log('dropped')
+      hoverClass: 'hover',
+      drop: (e, ui) ->
+        console.log @.id
+        console.log ui.helper
+        console.log ui.draggable
+        console.log 'dropped'
 
     @
 

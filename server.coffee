@@ -19,6 +19,7 @@ paths = [
   'src/home.coffee',
   'src/router.coffee',
   'src/sequencer.coffee',
+  'src/track.coffee',
   'src/main.coffee'
 ]
 
@@ -31,7 +32,8 @@ app.get '/app.js', (req, res) ->
     output += '//\n'
     data = fs.readFileSync(path, 'utf8')
     script = if path.match(new RegExp(/js$/)) then data.toString() else cs.compile(data)
-    output += uglify.minify(script, fromString: true).code + '\n'
+    #script = uglify.minify(script, fromString: true).code + '\n'
+    output += script
 
   res.send output
 

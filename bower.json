@@ -15,6 +15,8 @@
   "dependencies": {
     "jquery": "~2.0.3",
     "gridster": "*",
-    "qunit": "~1.12.0"
+    "qunit": "~1.12.0",
+    "underscore": "~1.5.2",
+    "backbone": "~1.1.0"
   }
 }

@@ -1,42 +1,23 @@
-define [
-  "router",
-  "composer",
-  "controls",
-  "sequencer",
-  "track",
-  "jquery-ui/ui/jquery-ui.js"
-  ], (Router, Composer, Controls, Sequencer, Track) ->
-    
-  class App extends Backbone.View
-    el: $ "#main"
+class App extends Backbone.View
+  el: '#main'
 
-    initialize: ->
-      console.log "Loading app"
-      @setup()
+  initialize: ->
+    @setup()
 
-    render: ->
-      @setTitle @title or "My Repl Demo"
+  setup: ->
+    new Router()
+    Backbone.history.start
+      pushState: true
+      root: "/"
 
-      # Set up the play controls
-      controls = new Controls      
-      @$el.append controls.render().el
+  setTitle: (title) ->
+    @$el.find("#title").html title
 
-      # Set up the interactive composer and library
-      composer = new Composer
-      @$el.append composer.render().el
+  render: ->
+    @setTitle @title or 'My Repl Demo'
+    @$el.append (new Controls).render().el
+    @$el.append (new Composer).render().el
+    @$el.append (new Sequencer).render().el
+    @
 
-      # Set up the sequencer area
-      sequencer = new Sequencer
-      @$el.append sequencer.render().el
-      
-      @
-
-    setup: ->
-      new Router()
-      Backbone.history.start
-        pushState: true
-        root: "/"
-
-    setTitle: (title) ->
-      @$el.find("#title").html title
-      
+window.App = App

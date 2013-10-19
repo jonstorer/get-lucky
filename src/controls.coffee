@@ -24,10 +24,11 @@ class Controls extends Backbone.View
 
     for i in [0..max]
       for sample in @mySong[i] || []
-        setTimeout =>
-          sample = sample(@repl.create)
-          sample?.play?(bpm) || @repl.create(sample).play(bpm)
-        , i * x
+        do (sample) =>
+          setTimeout =>
+            sample = sample(@repl.create)
+            sample?.play?(bpm) || @repl.create(sample).play(bpm)
+          , i * x
 
   render: ->
     @$el.html _.template("<div align='center'><img class='play' id='' src='/images/play.png'/ width='50px' style='margin-top: 10px;'></div>")

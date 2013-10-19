@@ -1,6 +1,7 @@
 cs      = require 'coffee-script'
 fs      = require 'fs'
-express = require('express')
+express = require 'express'
+uglify  = require 'uglifyjs'
 app     = express()
 
 paths = [
@@ -19,13 +20,16 @@ paths = [
 
 app.get '/app.js', (req, res) ->
   res.set('Content-Type', 'text/javascript')
-  scripts = for path in paths
+  output = ''
+  for path in paths
+    output += '//\n'
+    output += '// ' + path + '\n'
+    output += '//\n'
     data = fs.readFileSync(path, 'utf8')
-    if match = path.match(new RegExp(/js$/))
-      data.toString()
-    else
-      cs.compile data
-  res.send scripts.join("\n")
+    script = if path.match(new RegExp(/js$/)) then data.toString() else cs.compile data
+    output += uglify.minify(script, fromString: true).code + '\n'
+
+  res.send output
 
 app.use express.static(__dirname + '/public')
 app.use express.static(__dirname + '/bower_components')

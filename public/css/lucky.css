@@ -199,3 +199,7 @@ input {
 #library {
   padding: 15px;
 }
+
+#controls {
+  width: 100%;
+}

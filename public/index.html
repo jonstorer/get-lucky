@@ -3,7 +3,7 @@
   <head>
     <meta charset='utf-8'>
     <title>Get Lucky</title>
-    <script src='requirejs/require.js' data-main='src/config.js'></script>
+    <script src='app.js'></script>
     <link rel='stylesheet' type='text/css' href='css/reset.css'>
     <link rel='stylesheet' type='text/css' href='css/lucky.css'>
     <script type="text/javascript" src="//use.typekit.net/rok0jib.js"></script>
@@ -66,26 +66,21 @@
       </div>
     </div>
   </body>
-  <script src='requirejs/require.js' data-main='src/config.js'></script>
   <script>
-    require(['jquery/jquery.js', 'jquery-ui/ui/jquery-ui.js', 'underscore/underscore-min.js'], function() {
-
-      $(function(){
-        $('.sample').draggable({
-          snap: '.beat',
-          snapTolerance: 10
-        });
-
-        $('.beat').droppable({
-          accept: '.sample',
-          activeClass: 'active',
-          hoverClass: 'hover',
-          drop: function( event, ui ) {
-            console.log('dropped');
-          }
-        });
+    $(function(){
+      $('.sample').draggable({
+        snap: '.beat',
+        snapTolerance: 10
       });
 
+      $('.beat').droppable({
+        accept: '.sample',
+        activeClass: 'active',
+        hoverClass: 'hover',
+        drop: function( event, ui ) {
+          console.log('dropped');
+        }
+      });
     });
   </script>
 </html>

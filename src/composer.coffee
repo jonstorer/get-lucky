@@ -1,25 +1,25 @@
-define [], () ->
-  class Composer extends Backbone.View
-    id: "composer"
-    
-    initialize: ->
-      console.log "Loading composer"
+class Composer extends Backbone.View
+  id: "composer"
 
-    events: ->
-      "submit #repl": "replEval"
+  initialize: ->
+    console.log "Loading composer"
 
-    render: ->
-      @$el.html _.template """
-        <h3>Composer</h3>
-        <form id='repl'>
-          <textarea rows=10></textarea>
-          <input type='submit' value='Eval'/>
-        </form>
+  events: ->
+    "submit #repl": "replEval"
 
-        """
-      @
+  render: ->
+    @$el.html _.template """
+      <h3>Composer</h3>
+      <form id='repl'>
+        <textarea rows=10></textarea>
+        <input type='submit' value='Eval'/>
+      </form>
 
-    replEval: (e) ->
-      e.preventDefault()
-      console.log "Repl eval!"
-      
+      """
+    @
+
+  replEval: (e) ->
+    e.preventDefault()
+    console.log "Repl eval!"
+
+window.Composer = Composer

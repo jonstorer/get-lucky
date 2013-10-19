@@ -7,41 +7,17 @@
     <script src='jquery/jquery.js'></script>
     <script src='gridster/dist/jquery.gridster.min.js' charset='utf-8'></script>
     <script src='requirejs/require.js' data-main='src/config.js'></script>
-    <link rel='stylesheet' type='text/css' href='gridster/dist/jquery.gridster.css'>	
-    <link rel='stylesheet' type='text/css' href='css/lucky.css'>
+    <link rel='stylesheet' type='text/css' href='css/reset.css'>
+    <link rel='stylesheet' type='text/css' href='gridster/dist/jquery.gridster.css'>
     <link rel='stylesheet' href='qunit/qunit/qunit.css' media='screen'>
-
-    <script>
-      $(function(){ //DOM Ready
-        $('.gridster ul').gridster({
-          widget_margins: [10, 10],
-          widget_base_dimensions: [140, 140]
-        });
-      });
-    </script>
-
+    <link rel='stylesheet' type='text/css' href='css/lucky.css'>
+    <script type="text/javascript" src="//use.typekit.net/rok0jib.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   </head>
   <body>
-    <div id="main"></div>
-    <div class='gridster'>
-      <ul>
-        <li data-row='1' data-col='1' data-sizex='1' data-sizey='1'></li>
-        <li data-row='2' data-col='1' data-sizex='1' data-sizey='1'></li>
-        <li data-row='3' data-col='1' data-sizex='1' data-sizey='1'></li>
-
-        <li data-row='1' data-col='2' data-sizex='2' data-sizey='1'></li>
-        <li data-row='2' data-col='2' data-sizex='2' data-sizey='2'></li>
-
-        <li data-row='1' data-col='4' data-sizex='1' data-sizey='1'></li>
-        <li data-row='2' data-col='4' data-sizex='2' data-sizey='1'></li>
-        <li data-row='3' data-col='4' data-sizex='1' data-sizey='1'></li>
-
-        <li data-row='1' data-col='5' data-sizex='1' data-sizey='1'></li>
-        <li data-row='3' data-col='5' data-sizex='1' data-sizey='1'></li>
-
-        <li data-row='1' data-col='6' data-sizex='1' data-sizey='1'></li>
-        <li data-row='2' data-col='6' data-sizex='1' data-sizey='2'></li>
-      </ul>
+    <div id="top_nav"><h1>GetLucky</h1></div>
+    <div id="main">
+      <h2 id="title"></h2>
     </div>
   </body>
 </html>

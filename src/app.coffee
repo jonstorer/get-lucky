@@ -12,8 +12,9 @@ define [
       @setup()
 
     render: ->
+      @setTitle @title or "My Repl Demo"
       controls = new Controls      
-      @$el.html controls.render().el
+      @$el.append controls.render().el
             
       composer = new Composer
       @$el.append composer.render().el
@@ -28,3 +29,7 @@ define [
       Backbone.history.start
         pushState: true
         root: "/"
+
+    setTitle: (title) ->
+      @$el.find("#title").html title
+      

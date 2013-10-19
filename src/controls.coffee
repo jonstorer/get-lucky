@@ -30,7 +30,7 @@ class Controls extends Backbone.View
         , i * x
 
   render: ->
-    @$el.html "<div id='stopStart'> <a href='#' class='play'>Play</a> </div>"
+    @$el.html _.template("<div align='center'><img class='play' id='' src='/images/play.png'/ width='50px' style='margin-top: 10px;'></div>")
     @
 
 window.Controls = Controls

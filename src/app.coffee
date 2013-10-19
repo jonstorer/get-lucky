@@ -2,9 +2,10 @@ define [
   "router",
   "composer",
   "controls",
-  "sequencer"
+  "sequencer",
+  "track",
   "jquery-ui/ui/jquery-ui.js"
-  ], (Router, Composer, Controls, Sequencer) ->
+  ], (Router, Composer, Controls, Sequencer, Track) ->
     
   class App extends Backbone.View
     el: $ "#main"
@@ -14,28 +15,17 @@ define [
       @setup()
 
     render: ->
-      $('.sample').draggable
-        snap: '.beat',
-        snapTolerance: 10
-
-      $('.beat').droppable
-        accept: '.sample',
-        activeClass: 'active',
-        hoverClass: 'hover',
-        drop: (e, ui) ->
-          console.log @.id
-          console.log ui.helper
-          console.log ui.draggable
-          console.log 'dropped'
-
-      
       @setTitle @title or "My Repl Demo"
+
+      # Set up the play controls
       controls = new Controls      
       @$el.append controls.render().el
-            
+
+      # Set up the interactive composer and library
       composer = new Composer
       @$el.append composer.render().el
 
+      # Set up the sequencer area
       sequencer = new Sequencer
       @$el.append sequencer.render().el
       

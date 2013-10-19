@@ -4,5 +4,5 @@ define [], () ->
       console.log "Loading composer"
 
     render: ->
-      console.log "rendering!"
+      @$el.html _.template("Composer goes here")
       @

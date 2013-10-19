@@ -1,8 +1,9 @@
 define [], () ->
   class Controls extends Backbone.View
+    id: "controls"
     initialize: ->
       console.log "Loading controls"
 
     render: ->
-      console.log "rendering!"
+      @$el.html _.template("Controls go here")
       @

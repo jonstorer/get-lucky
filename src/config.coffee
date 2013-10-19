@@ -1,17 +1,15 @@
 #Set the require.js configuration for your application.
 require.config
-  deps: ["backbone", "main"]
+  deps: ["backbone", "handlebars", "backbone_handlebars", "main"]
 
   paths:
-    # JavaScript folders.
-    src: "../src"
-    plugins: "../src/plugins"
-
-    # Libraries.
     underscore: "../underscore/underscore-min"
     backbone: "../backbone/backbone-min"
+    backbone_handlebars: "../backbone.handlebars/dist/backbone.handlebars.min"
+    handlebars: "../handlebars/handlebars"
     
   hbs:
+    templateExtension : 'hbs'
     disableI18n: true
               
   shim:
@@ -20,3 +18,5 @@ require.config
     backbone:
       deps: ["underscore"]
       exports: "Backbone"
+    backbone_handlebars:
+      deps: ["backbone"]

@@ -1,8 +1,9 @@
 define [], () ->
   class Sequencer extends Backbone.View
+    id: "sequencer"
     initialize: ->
       console.log "Loading sequencer"
 
     render: ->
-      console.log "rendering!"
+      @$el.html _.template("Sequencer goes here")
       @

@@ -5,4 +5,4 @@ require [
 ], (_, Backbone, App) ->
   $ ->
     window.app = new App
-    $("#main").html window.app.render().el
+    window.app.render()

@@ -169,3 +169,12 @@ input[type=submit]:hover {
 .tab {
   
 }
+
+input {
+  display: block;
+  padding: 5px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  width: 95%;
+
+}

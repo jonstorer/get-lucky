@@ -3,29 +3,58 @@ class Composer extends Backbone.View
 
   initialize: ->
     console.log "Loading composer"
+    @repl = soundrepl.init(window.ac)
 
     @inputTemplate = """
       <h3>Composer</h3>
       <form id='repl'>
-        <input name='title' type='text'>
-        <textarea rows='10 name='sample' id='sample''></textarea>
-        <input type='submit' value='Play'/>
-        <a href="#">Save</a>
+        <label for='name'>Name</label>
+        <input name='name' type='text'/>
+        <label for='repl'>Repl</label>
+        <input type='text' name='repl'/>
+        <input type='submit' value='Play' style='display: inline-block;'/>
+        <a id='addToLibrary' href='#'>Save</a>
       </form>
     """
 
   events: ->
-    "submit #repl": "replEval"
+    "submit #repl": "submitReplEval"
+    "click #addToLibrary": "addToLibrary"
+    "keypress :input": "keyReplEval"
 
   render: ->
     @$el.html @inputTemplate
     @
 
-  replEval: (e) ->
-    e.preventDefault()
-    sample = new Function(@$('textarea').val())
-    sample.name = @$('input[type=text]').val()
+  keyReplEval: (e) ->
+    if e.keyCode == 13
+      e.preventDefault()
+      @replEval()
 
+  submitReplEval: (e) ->
+    e.preventDefault()
+    @replEval()
+
+  replEval: (e) ->
+    console.log "Eval repl"
+    code = @$el.find('input[name=repl]').val()
+    console.log code
+    try
+      `var input;`
+      `input = new Function('sample', 'return ' + code)(this.repl.create);`
+      # console.log input
+    catch err
+      window.alert(err)
+    `if (typeof input === 'object' && 'play' in input && typeof input.play === 'function') 
+          input.play(bpm);
+        else //sound primative
+          this.repl.create(input).play(bpm);`
+    return 
+      
+  addToLibrary: (e) ->
+    e.preventDefault()
+    sample = new Function(@$el.find('input[name=repl]').val())
+    sample.name = @$el.find('input[name=name]').val()    
     Exchange.trigger 'new sample', new Sample(sample: sample)
 
 window.Composer = Composer

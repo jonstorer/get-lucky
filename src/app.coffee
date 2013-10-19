@@ -5,6 +5,8 @@ class App extends Backbone.View
     @setup()
 
   setup: ->
+    window.ac = new (window.AudioContext || window.webkitAudioContext)
+    window.bpm = 120
     new Router()
     Backbone.history.start
       pushState: true

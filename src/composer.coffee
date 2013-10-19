@@ -3,31 +3,29 @@ class Composer extends Backbone.View
 
   initialize: ->
     console.log "Loading composer"
-    @sampleTemplate = _.template """
-      <div class='sample' data-id=''>
-      </div>
+
+    @inputTemplate = """
+      <h3>Composer</h3>
+      <form id='repl'>
+        <input name='title' type='text'>
+        <textarea rows='10 name='sample' id='sample''></textarea>
+        <input type='submit' value='Play'/>
+        <a href="#">Save</a>
+      </form>
     """
 
-    @stage = soundrepl.create()
   events: ->
     "submit #repl": "replEval"
 
   render: ->
-    @$el.html """
-      <h3>Composer</h3>
-      <form id='repl'>
-        <input type='text'>
-        </input>
-        <textarea rows=10>
-        </textarea>
-        <input type='submit' value='Commit'/>
-      </form>
-
-      """
+    @$el.html @inputTemplate
     @
 
   replEval: (e) ->
     e.preventDefault()
-    console.log "Repl eval!"
+    sample = new Function(@$('textarea').val())
+    sample.name = @$('input[type=text]').val()
+
+    Exchange.trigger 'new sample', new Sample(sample: sample)
 
 window.Composer = Composer

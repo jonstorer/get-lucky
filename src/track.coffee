@@ -14,12 +14,7 @@ class Track extends Backbone.View
     """
 
   render: ->
-    template = _.template """
-      <% _.each(beats, function(name) { %>
-        <div class='beat'>&nbsp</div>
-      <% }); %>
-    """
-    @$el.html template({beats: _.range(200)})
+    @$el.html @trackTemplate({numBeats: 200})
     @
 
 window.Track = Track

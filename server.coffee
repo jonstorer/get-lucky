@@ -13,6 +13,7 @@ paths = [
   'bower_components/jquery-ui/ui/jquery-ui.js',
   'bower_components/underscore/underscore-min.js',
   'bower_components/backbone/backbone-min.js',
+  'src/exchange.coffee',
   'src/app.coffee',
   'src/composer.coffee',
   'src/controls.coffee',
@@ -20,6 +21,9 @@ paths = [
   'src/router.coffee',
   'src/sequencer.coffee',
   'src/track.coffee',
+  'src/library.coffee',
+  'src/sample.coffee',
+  'src/side_bar.coffee',
   'src/main.coffee'
 ]
 

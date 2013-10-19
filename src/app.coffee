@@ -16,8 +16,8 @@ class App extends Backbone.View
   render: ->
     @setTitle @title or 'My Repl Demo'
     @$el.append (new Controls).render().el
-    @$el.append (new Composer).render().el
     @$el.append (new Sequencer).render().el
+    @$el.append (new Sidebar).render().el
     @
 
 window.App = App
